@@ -1,0 +1,21 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header,
+footer {
+    width: 100%;
+    height: 100px;
+    /* background-color: rgb(37, 37, 37); */
+}
+
+
+
+body {
+    background-color: white;
+}
+
+.navbar-item.has-text-white:hover {
+    background-color: black;
+}
