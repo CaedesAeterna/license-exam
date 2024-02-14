@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header,
+footer {
+    width: 100%;
+    height: 100px;
+    /* background-color: rgb(37, 37, 37); */
+}
+
+
+
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+/* 
+   This CSS rule changes the background color of the navbar item 
+   to black when it is being hovered over.
+*/
+.navbar-item.has-text-white:hover {
+    background-color: black;
+}
+
+
+/* Custom styles for the navbar menu */
+.navbar-menu.is-active {
+    background-color: #333;
+    /* Dark background for visibility */
+}
+
+/* Ensure text color is white (if not already) */
+.navbar-menu.is-active .navbar-item {
+    color: white !important;
+    /* Override text color if necessary */
+}
