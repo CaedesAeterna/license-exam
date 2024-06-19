@@ -33,11 +33,11 @@ $mail = new PHPMailer();
 $mail->isSMTP();
 
 
-$mail->Host = 'smtp.gmail.com';
+$mail->Host = '';
 $mail->SMTPAuth = true;
 $mail->Username = '';
 $mail->Password = '';
-$mail->Port = 587;
+$mail->Port = ;
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
 $mail->SMTPDebug = SMTP::DEBUG_SERVER;
