@@ -43,11 +43,11 @@ session_start();
 
                 <div class="is-flex is-justify-content-space-between">
 
-                    <div class="button ml-6 is-success" id="workOnTicket">
+                    <div class="button ml-6 is-success" id="workOnTicket" style="display: none;">
                         Work on ticket
                     </div>
 
-                    <div class="button mr-6 is-danger" id="ticketDone">
+                    <div class="button mr-6 is-danger" id="ticketDone" style="display: none;">
                         Ticket done
                     </div>
 
@@ -94,6 +94,16 @@ session_start();
                 console.log(data);
                 data = JSON.parse(data);
 
+                var users_id = data.users_id;
+
+                if (users_id == null) {
+                    $("#workOnTicket").show();
+                    $("#ticketDone").remove();
+                } else {
+                    $("#workOnTicket").remove();
+                    $("#ticketDone").show();
+                }
+
                 $("#ticketName").text(data.name);
                 $("#ticketBody").text(data.description);
                 $("#project_id").val(data.project_id);
@@ -116,9 +126,12 @@ session_start();
                 }).done(function (data) {
 
                     $("#workOnTicket").addClass("is-disabled");
-
+                    data = JSON.parse(data);
                     console.log(data);
-
+                    
+                    if (data == true) {
+                        basicPopUp("Ticket done")
+                    }
                 })
 
             })

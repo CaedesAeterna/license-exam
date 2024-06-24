@@ -39,12 +39,9 @@ kétféle képpen számlázhatsz, vagy havonta, vagy azt mondod a kliensnek, hog
 
 */
 
-
 $array = array();
 
-
 if ($type == 'workers') {
-
 
     if (!empty($_POST['start_date']) and !empty($_POST['end_date'])) {
         $start_date = $db->escape_string($_POST['start_date']);
@@ -55,13 +52,12 @@ if ($type == 'workers') {
         $array = getWorkerHours($worker_id);
     }
 
-
     die($array);
 
     //-------------------------------------------------------------------------------------------------------------------------
 } else if ($type == 'tasks') {
 
-    if (!empty($_POST['start_date']) and empty($_POST['end_date'])) {
+    if (!empty($_POST['start_date']) and !empty($_POST['end_date'])) {
 
         $start_date = $db->escape_string($_POST['start_date']);
         $end_date = $db->escape_string($_POST['end_date']);

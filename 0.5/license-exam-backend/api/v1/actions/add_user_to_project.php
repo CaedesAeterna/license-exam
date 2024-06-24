@@ -34,11 +34,11 @@ $row = $res->fetch_assoc();
 
 $uid = $row['id'];
 
-$insert_into_wop_sql = "INSERT INTO `works_on_project` (`project_id`, `user_id`) 
+$insert_into_wop_sql = "INSERT ignore INTO `works_on_project` (`project_id`, `user_id`) 
                         VALUES ('$project_id', '$uid');";
 
 if ($db->query($insert_into_wop_sql)) {
-    $success = true;
+    $success = $db->affected_rows > 0; // True if a row was inserted
 } else {
     $success = false;
 }

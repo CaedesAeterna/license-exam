@@ -29,12 +29,12 @@ require_once __DIR__ . "/../../../vendor/autoload.php";
 $mail = new PHPMailer();
 // configure an SMTP
 $mail->isSMTP();
-$mail->Host = '';
-$mail->SMTPAuth = ;
-$mail->Username = '';
-$mail->Password = '';
+$mail->Host = 'live.smtp.mailtrap.io';
+$mail->SMTPAuth = true;
+$mail->Username = 'api';
+$mail->Password = '31fb777c242d3693bc717b20ad26e38c';
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-$mail->Port = ;
+$mail->Port = 587;
 
 $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 

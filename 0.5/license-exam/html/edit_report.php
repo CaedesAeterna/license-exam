@@ -97,13 +97,13 @@ session_start();
 
 
             if ($('#editSummary').val() == "") {
-                alert("Summary cannot be empty");
+                basicPopUp("Summary cannot be empty");
             } else if ($('#editComment').val() == "") {
-                alert("Comment cannot be empty");
+                basicPopUp("Comment cannot be empty");
             } else if ($('#editHours').val() == "") {
-                alert("Hours cannot be empty");
+                basicPopUp("Hours cannot be empty");
             } else if ($('#startDateTime').val() == "") {
-                alert("Datetime cannot be empty");
+                basicPopUp("Datetime cannot be empty");
             }
             else {
 
@@ -131,10 +131,15 @@ session_start();
                     data = JSON.parse(data);
                     console.log(data);
 
-                    if (data['success'] == true) {
+                    if (data.success == true) {
+                        basicPopUp("Report edited");
 
-                        window.location.href = "show_reports.php?task_id=" + task_id
-                            + "&projects_id=" + projects_id;
+                        setTimeout(function () {
+                            window.location.href = "show_reports.php?task_id=" + task_id
+                                + "&projects_id=" + projects_id;
+
+
+                        }, 1000);
 
 
                     }

@@ -18,12 +18,10 @@ function getWorkerHours($worker_id, $start_date = '', $end_date = '')
     $total_seconds = 0; // Use total seconds for accurate calculation
 
     if (!empty($start_date) and !empty($end_date)) {
-        $start_date = $db->escape_string($_POST['start_date']);
-        $end_date = $db->escape_string($_POST['end_date']);
 
         $query = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(r.duration))) AS total_time, user_id 
               FROM reports r 
-              WHERE r.start BETWEEN '$start_date' AND '$end_date'
+              WHERE r.start_date BETWEEN '$start_date' AND '$end_date'
               GROUP BY user_id";
     } else {
         $query = "SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(r.duration))) AS total_time, user_id 
@@ -97,20 +95,13 @@ function getTaskHours($worker_id, $project_id, $start_date = '', $end_date = '')
             $tid = $task['id'];
             $totalMinutes = 0;
 
-
-            //$get_tasks_sql = "SELECT r.duration from reports r where r.tasks_id = '$tid' 
-            //and r.start between '$start_date' and '$end_date';";
-
             if (!empty($start_date) and !empty($end_date)) {
-
-                $start_date = $db->escape_string($_GET['start_date']);
-                $end_date = $db->escape_string($_GET['end_date']);
 
                 $get_reports_sql = "SELECT r.duration 
                                     from reports r 
                                     where r.tasks_id = '$tid'
-                                    and r.start 
-                                        between '$start_date' and '$end_date' ;";
+                                    and r.start_date
+                                        between '$start_date' and '$end_date';";
 
             } else {
 
@@ -119,8 +110,6 @@ function getTaskHours($worker_id, $project_id, $start_date = '', $end_date = '')
                                     where r.tasks_id = '$tid';";
 
             }
-
-            //echo $get_tasks_sql;
 
             if (!$result = $db->query($get_reports_sql)) {
                 die('could not get reports');

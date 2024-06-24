@@ -17,6 +17,7 @@ requireLogin();
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
 
+
 if (!empty($_GET['project_id']) and !empty($_GET['type'])) {
     $project_id = $db->escape_string($_GET['project_id']);
     $type = $db->escape_string($_GET['type']);
@@ -94,7 +95,7 @@ foreach ($dataArray as $key => $value) {
 
 $table .= "</table>";
 
-$tpl = file_get_contents(API_DIR . 'tpl/pdf.test.template.html');
+$tpl = file_get_contents(API_DIR . 'tpl/pdf.template.html');
 
 $tpl = str_replace('{list}', $table, $tpl);
 

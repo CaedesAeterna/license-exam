@@ -16,15 +16,15 @@ $tid = $db->escape_string($_POST['task_id']);
 
 
 if (!isTaskAssignedToUser($uid, $tid)) {
-    die ('not assigned');
+    die('not assigned');
 }
 
-$reports_sql = "SELECT r.id, r.user_id, r.summary, r.comments, r.hours, r.start 
+$reports_sql = "SELECT r.id, r.user_id, r.summary, r.comments, r.hours, r.start, r.start_date
                 FROM reports r 
                 where r.tasks_id = '$tid';";
 
 $reports = $db->query($reports_sql)
-    or die ('could not get reports');
+    or die('could not get reports');
 
 
 $finalArray = array();
@@ -49,14 +49,14 @@ while ($row = $reports->fetch_assoc()) {
     $array['summary'] = $row['summary'];
     $array['comments'] = $row['comments'];
     $array['hours'] = $row['hours'];
-    $array['start'] = dateFormat($row['start']);
+    $array['start'] = dateFormat($row['start_date']);
 
     $reports_array[] = $array;
 }
 $finalArray["reports"] = $reports_array;
 
 
-die (json_encode($finalArray));
+die(json_encode($finalArray));
 
 
 

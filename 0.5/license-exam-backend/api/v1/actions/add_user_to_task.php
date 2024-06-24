@@ -35,12 +35,14 @@ $row = $res->fetch_assoc();
 
 $uid = $row['id'];
 
-$insert_into_wot_sql = "INSERT INTO `works_on_task` (`tasks_id`, `users_id`) VALUES ('$task_id', '$uid');";
+$insert_into_wot_sql = "INSERT ignore INTO  `works_on_task` (`tasks_id`, `users_id`) 
+                        VALUES ('$task_id', '$uid');";
 
 if ($db->query($insert_into_wot_sql)) {
-    $success = true;
+    $success = $db->affected_rows > 0; // True if a row was inserted
 } else {
     $success = false;
 }
+
 
 die(json_encode($success));

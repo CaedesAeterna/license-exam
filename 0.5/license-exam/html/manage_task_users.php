@@ -150,9 +150,21 @@ session_start();
                     }
 
                 }).done(function (data) {
+                    data = JSON.parse(data);
                     console.log(data);
-                    $('#searchedUser').val('');
-                    location.reload(true);
+
+                    if (data == false) {
+                        basicPopUp('User not added already on this task');
+                    } else {
+                        basicPopUp('User added');
+                    }
+
+
+                    $('#searched_user').val('');
+
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
                 })
 
 

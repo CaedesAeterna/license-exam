@@ -16,5 +16,3 @@ $db_password = '';
 
 //live db config
 
-
-?>

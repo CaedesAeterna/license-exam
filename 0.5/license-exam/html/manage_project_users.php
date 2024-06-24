@@ -141,9 +141,23 @@ session_start();
                     project_id: project_id
                 }
             }).done(function (data) {
+                data = JSON.parse(data);
                 console.log(data);
+
+                if (data == false) {
+                    basicPopUp('User not added already on this project');
+                } else {
+                    basicPopUp('User added');
+                }
+
+
                 $('#searched_user').val('');
-                location.reload(true);
+
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+
+
             });
         });
 

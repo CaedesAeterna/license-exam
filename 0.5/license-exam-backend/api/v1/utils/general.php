@@ -120,11 +120,10 @@ function SendEmail($to, $toname, $subject, $body)
     $phpmailer = new PHPMailer();
     $phpmailer->isSMTP();
 
-    $phpmailer->Host = '';
-    $phpmailer->SMTPAuth = ;
-    $phpmailer->Username = '';
-    $phpmailer->Password = '';
-    $phpmailer->Port = ;
+
+    $phpmailer->SMTPAuth = true;
+
+
     $phpmailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     //$phpmailer->SMTPDebug = SMTP::DEBUG_SERVER;
 

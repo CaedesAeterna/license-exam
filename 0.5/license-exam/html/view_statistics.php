@@ -116,7 +116,7 @@ session_start();
     <script>
 
         $(document).ready(function () {
-            
+
             urlParams = new URLSearchParams(window.location.search);
             var project_id = urlParams.get('project_id');
 
@@ -152,9 +152,9 @@ session_start();
 
             $('#get_gtatistics').click(function () {
                 $("#statisticsTable tbody tr").remove();
-                
+
                 var selectedValue = $('input[name="answer"]:checked').attr('id');
-        
+
                 if (selectedValue == "workers") {
                     var type = "workers";
                 } else if (selectedValue == "tasks") {

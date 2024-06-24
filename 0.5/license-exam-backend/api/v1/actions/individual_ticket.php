@@ -26,7 +26,7 @@ requireLogin();
 
 $uid = $_SESSION['id'];
 
-$sql = "SELECT tickets.id, tickets.name, tickets.description, tickets.projects_id, tickets.active 
+$sql = "SELECT tickets.id, tickets.name, tickets.description, tickets.projects_id, tickets.active , tickets.users_id 
 FROM tickets 
 WHERE tickets.id= ' $ticket_id' ;";
 
@@ -46,7 +46,7 @@ $res['name'] = $row['name'];
 $res['description'] = $row['description'];
 $res['active'] = $row['active'];
 $res['project_id'] = $row['projects_id'];
-
+$res['users_id'] = $row['users_id'];
 
 die(json_encode($res));
 
